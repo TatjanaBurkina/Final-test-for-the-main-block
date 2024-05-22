@@ -1,56 +1,40 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Console.WriteLine("Hello, World!");
 
-
 using System;
 
-class Program
+class ShortStringsArray
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        string[][] originalArray = new string[][]
-        {
-            new string[] { "Hello", "2", "world", ":-)" },
-            // Другие массивы строк могут быть добавлены здесь
-        };
+        // Input array (can be modified to take input from the user)
+        string[] originalArray = { "1234", "1567", "-2", "computer science" };
 
-        string[] newArray = GenerateNewArray(originalArray);
+        // Create a new array to store short strings
+        string[] shortStringsArray = new string[originalArray.Length];
 
-        Console.WriteLine("New Array:");
-        foreach (string str in newArray)
-        {
-            Console.WriteLine(str);
-        }
-    }
+        // Counter to track the index in the new array
+        int shortStringsIndex = 0;
 
-    static string[] GenerateNewArray(string[][] originalArray)
-    {
-        int count = 0;
-        foreach (string[] arr in originalArray)
+        // Iterate through the original array
+        foreach (string str in originalArray)
         {
-            foreach (string str in arr)
+            // Check if the string length is less than or equal to 3
+            if (str.Length <= 3)
             {
-                if (str.Length <= 3)
-                {
-                    count++;
-                }
+                // Add the short string to the new array
+                shortStringsArray[shortStringsIndex++] = str;
             }
         }
 
-        string[] resultArray = new string[count];
-        int index = 0;
-        foreach (string[] arr in originalArray)
-        {
-            foreach (string str in arr)
-            {
-                if (str.Length <= 3)
-                {
-                    resultArray[index] = str;
-                    index++;
-                }
-            }
-        }
+        // Resize the new array to the actual number of short strings (optional)
+        Array.Resize(ref shortStringsArray, shortStringsIndex);
 
-        return resultArray;
+        // Print the new array of short strings
+        Console.WriteLine("New array of short strings:");
+        foreach (string str in shortStringsArray)
+        {
+            Console.Write(str + " ");
+        }
     }
 }
