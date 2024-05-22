@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
+// 
 
 using System;
 
@@ -8,7 +8,7 @@ class ShortStringsArray
     static void Main(string[] args)
     {
         // Input array (can be modified to take input from the user)
-        string[] originalArray = { "1234", "1567", "-2", "computer science" };
+        string[] originalArray = { "Russia", "Denmark", "Kazan" };
 
         // Create a new array to store short strings
         string[] shortStringsArray = new string[originalArray.Length];
@@ -27,14 +27,19 @@ class ShortStringsArray
             }
         }
 
-        // Resize the new array to the actual number of short strings (optional)
-        Array.Resize(ref shortStringsArray, shortStringsIndex);
-
         // Print the new array of short strings
         Console.WriteLine("New array of short strings:");
-        foreach (string str in shortStringsArray)
+        if (shortStringsIndex == 0)
         {
-            Console.Write(str + " ");
+            Console.WriteLine("There are no strings with length less than or equal to 3.");
+        }
+        else
+        {
+            for (int i = 0; i < shortStringsIndex; i++)
+            {
+                Console.Write(shortStringsArray[i] + " ");
+            }
         }
     }
 }
+
